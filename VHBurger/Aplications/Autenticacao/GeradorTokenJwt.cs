@@ -23,11 +23,11 @@ namespace VHBurger.Aplications.Autenticacao
 
             //ISSUE - Quem gerou o token nome da api ou sistema que gerou
             // API valida se o token veio do emissor correto
-            var issuer = _config["Jwt:Issuer"];
+            var issuer = _config["Jwt:Issuer"]!;
 
             //AUDIENCE - Para quem o tokenfoi criado
             // define qual sistema pode usar o token
-            var audience = _config["Jwt:Audience"];
+            var audience = _config["Jwt:Audience"]!;
 
             // TEMPO DE EXPIRAÇÃO - Define quantos minutos o token sera válido
             // Depois,disso o usuário precisa logar novamente.
@@ -37,7 +37,7 @@ namespace VHBurger.Aplications.Autenticacao
             var keyBytes = Encoding.UTF8.GetBytes(chave);
 
             //Segurança: exige uma chave com pelo menos 32 caracteres (26 bits)
-            if (keyBytes.Length > 32)
+            if (keyBytes.Length < 32)
             {
                 throw new CannotUnloadAppDomainException("Jwt: Key precisa ter pelo menos 32 caracateres (256 bits)");
             }

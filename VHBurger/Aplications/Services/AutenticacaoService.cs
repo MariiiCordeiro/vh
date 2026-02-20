@@ -20,7 +20,7 @@ namespace VHBurger.Aplications.Services
         // Compara a HASH SHA256
         private static bool VerificarSenha(string senhaDigitada, byte[] senhaHashBanco)
         {
-            using var sha = System.Security.Cryptography.SHA1.Create();
+            using var sha = System.Security.Cryptography.SHA256.Create();
             var hashDigitada = sha.ComputeHash(System.Text.Encoding.UTF8.GetBytes(senhaDigitada));
 
             return hashDigitada.SequenceEqual(senhaHashBanco);
@@ -32,7 +32,7 @@ namespace VHBurger.Aplications.Services
 
             if (usuario == null)
             {
-                throw new DomainException("Email ou senha inválidos!");
+                throw new DomainException("Usuário não existe!");
             }
 
             //Comparar com a senha armazenada

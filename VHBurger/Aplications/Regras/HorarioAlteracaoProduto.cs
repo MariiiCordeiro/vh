@@ -16,7 +16,7 @@ namespace VHBurger.Aplications.Regras
             //se retornar true
             if (estaAberto)
             {
-                throw new DomainException("Produto só pode ser alterado fora do horário de funcionamneto!");
+                throw new DomainException("Produto só pode ser alterado fora do horário de funcionamento!");
             }
         }
     }

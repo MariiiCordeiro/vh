@@ -8,7 +8,7 @@ namespace VHBurger.Aplications.Conversoes
     {
         public static LerProdutoDto ConverterParaDto(Produto produto)
         {
-            return new LerProdutoDto
+            return new LerProdutoDto 
             {
                 ProdutoID = produto.ProdutoID,
                 Nome = produto.Nome,
@@ -21,8 +21,8 @@ namespace VHBurger.Aplications.Conversoes
                 Categorias = produto.Categoria.Select(categoria => categoria.Nome).ToList(),
 
                 UsuarioID = produto.UsuarioID,
-                UsuarioNome = produto.Usuario.Nome,
-                UsuarioEmail = produto.Usuario.Email
+                UsuarioNome = produto.Usuario?.Nome,
+                UsuarioEmail = produto.Usuario?.Email
             };
         }
     }
